@@ -7,7 +7,7 @@ class HotelViewSet(ModelViewSet):
     queryset = Hotel.objects.all()
     serializer_class = HotelSerializer
 
-def get_serializer_context(self):
-    context = super().get_serializer_context()
-    context.update({'request': self.request})
-    return context
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({'request': self.request})
+        return context

@@ -11,6 +11,7 @@ from bookings.views import BookingViewSet
 from users.views import RegisterView, login_view, me, UserAvatarUpdateView
 from favorites.views import FavoriteViewSet
 from reviews.views import ReviewViewSet
+from support.views import SupportRequestViewSet
 
 
 router = DefaultRouter()
@@ -20,6 +21,7 @@ router.register(r"hotels", HotelViewSet)
 router.register(r"bookings", BookingViewSet, basename="bookings")
 router.register(r"favorites", FavoriteViewSet, basename="favorites")
 router.register(r"reviews", ReviewViewSet, basename="reviews")
+router.register(r"support-requests", SupportRequestViewSet, basename="support-requests")
 
 
 urlpatterns = [

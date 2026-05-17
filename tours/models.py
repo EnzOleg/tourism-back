@@ -10,6 +10,11 @@ class Tour(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     hotels = models.ManyToManyField(Hotel, blank=True, related_name='tours')
     description = models.TextField()
+
+    manager_name = models.CharField(max_length=255, blank=True, null=True)
+    manager_phone = models.CharField(max_length=50, blank=True, null=True)
+    manager_email = models.EmailField(blank=True, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

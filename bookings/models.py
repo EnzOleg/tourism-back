@@ -35,6 +35,8 @@ class Booking(models.Model):
 
     start_date = models.DateField()
     end_date = models.DateField()
+    
+    people_count = models.PositiveIntegerField(default=1)
 
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -42,6 +44,12 @@ class Booking(models.Model):
         max_length=20,
         choices=STATUS_CHOICES,
         default="pending"
+    )
+
+    refund_message = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

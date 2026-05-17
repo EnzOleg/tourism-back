@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'payments',
     'reviews',
     'favorites',
+    'support',
 ]
 
 MIDDLEWARE = [
@@ -66,12 +67,12 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://b184-2a03-32c0-2f-24c6-c1e0-afe6-8f85-878d.ngrok-free.app",
+    "https://exp-sources-instantly-societies.trycloudflare.com",
 ]
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
-    "https://b184-2a03-32c0-2f-24c6-c1e0-afe6-8f85-878d.ngrok-free.app",
+    "https://exp-sources-instantly-societies.trycloudflare.com",
 ]
 CORS_EXPOSE_HEADERS = ["Content-Type", "Authorization"]
 CORS_ALLOW_HEADERS = [

@@ -22,10 +22,25 @@ class BookingViewSet(ModelViewSet):
         if booking.user != request.user:
             return Response({"error": "Not allowed"}, status=403)
 
+        if booking.status == "cancelled":
+            return Response({"error": "Бронирование уже отменено"}, status=400)
+
+        if booking.status == "completed":
+            return Response({"error": "Завершённое бронирование нельзя отменить"}, status=400)
+
+        was_paid = booking.status == "confirmed"
+
         booking.status = "cancelled"
+
+        if was_paid:
+            booking.refund_message = "Бронирование отменено. Деньги вернулись на карту."
+        else:
+            booking.refund_message = None
+
         booking.save()
 
-        return Response({"status": "cancelled"})
+        serializer = self.get_serializer(booking)
+        return Response(serializer.data)
 
     @action(detail=True, methods=["post"])
     def pay(self, request, pk=None):
